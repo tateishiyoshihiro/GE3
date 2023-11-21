@@ -17,11 +17,19 @@ public://メンバ関数
 	/// キーの押下をチェック
 	/// </summary>
 	/// <param name="KeyNumber">キー番号</param>
-	/// <returns></returns>
-	bool PushKey(BYTE KeyNumber);
+	/// <returns>押されているか</returns>
+	bool PushKey(BYTE keyNumber);
+	/// <summary>
+	///	キートリガーをチェック
+	/// </summary>
+	/// <param name="keyNumber">キー番号</param>
+	/// <returns>トリガーか</returns>
+	bool TriggerKey(BYTE keyNumber);
 private://メンバ変数
 	// キーボードデバイスの生成
 	ComPtr<IDirectInputDevice8> keyboard;
+	ComPtr<IDirectInput8> directInput;
 	BYTE key[256] = {};
+	BYTE keyPre[256] = {};
 };
 
