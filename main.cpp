@@ -1,6 +1,8 @@
 ﻿#include"Input.h"
 #include "WinApp.h"
 #include "DirectXCommon.h"
+#include"SpriteCommon.h"
+#include"Sprite.h"
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -14,7 +16,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     //入力の初期化
     winApp = new WinApp();
     winApp->Initialize();
-    
+
 #pragma endregion
 
 #pragma region DirectX初期化処理
@@ -25,6 +27,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     //入力の初期化
     input = new Input();
     input->Initialize(winApp);
+    
+    //スプライト顧問
+    SpriteCommon* spriteCommon = new SpriteCommon();
+    spriteCommon->Initialize();
+
+    //スプライト
+    Sprite* sprite = new Sprite();
+    sprite->Initialize();
     
     // ゲームループ
    while (true) {
@@ -41,6 +51,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
    }
     
     //入力解放
+   delete sprite;
+   delete spriteCommon;
     delete input;
     delete winApp;
     delete dxCommon;
