@@ -11,7 +11,8 @@
 #include "WinApp.h"]
 
 #include "DirectXCommon.h"
-
+#include "SpriteCommon.h"
+#include "Sprite.h"
 
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "d3dcompiler.lib")
@@ -221,6 +222,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     //入力の初期化
     input = new Input();
     input->Initialize(winApp);
+
+    SpriteCommon* spriteCommon = new SpriteCommon();
+    spriteCommon->Initialize();
+
+    Sprite* sprite = new Sprite();
+    sprite->Initialize();
+
 #pragma region 描画初期化処理
 
     // 頂点データ
@@ -779,6 +787,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     
 
     //入力解放
+    delete sprite;
+    delete spriteCommon;
     delete input;
     delete winApp;
     delete dxCommon;
