@@ -21,12 +21,15 @@ void SpriteCommon::Initialize(DirectXCommon* dxCommon)
 	D3D12_ROOT_SIGNATURE_DESC descriptorRootSignature{};
 	descriptorRootSignature.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
 	//RooParamter作成
-	D3D12_ROOT_PARAMETER rootParameter[1]{};
+	D3D12_ROOT_PARAMETER rootParameter[2]{};
 	//色
 	rootParameter[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
 	rootParameter[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 	rootParameter[0].Descriptor.ShaderRegister = 0;
-
+	//行列
+	rootParameter[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+	rootParameter[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_VERTEX;
+	rootParameter[1].Descriptor.ShaderRegister = 0;
 	descriptorRootSignature.pParameters = rootParameter;
 	descriptorRootSignature.NumParameters = _countof(rootParameter);
 	//シリアライズとしてバイナリにする
