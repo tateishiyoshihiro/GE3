@@ -159,6 +159,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DirectXCommon.cpp" />
+    <ClCompile Include="Extemal\imgui\imgui.cpp" />
+    <ClCompile Include="Extemal\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Extemal\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Extemal\imgui\imgui_impl_dx12.cpp" />
+    <ClCompile Include="Extemal\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="Extemal\imgui\imgui_tables.cpp" />
+    <ClCompile Include="Extemal\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -201,6 +208,14 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
   <ItemGroup>
     <ClInclude Include="BufferResource.h" />
     <ClInclude Include="DirectXCommon.h" />
+    <ClInclude Include="Extemal\imgui\imconfig.h" />
+    <ClInclude Include="Extemal\imgui\imgui.h" />
+    <ClInclude Include="Extemal\imgui\imgui_impl_dx12.h" />
+    <ClInclude Include="Extemal\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="Extemal\imgui\imgui_internal.h" />
+    <ClInclude Include="Extemal\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Extemal\imgui\imstb_textedit.h" />
+    <ClInclude Include="Extemal\imgui\imstb_truetype.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteCommon.h" />
@@ -210,6 +225,9 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ProjectReference Include="..\External\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj">
       <Project>{371b9fa9-4c90-4ac6-a123-aced756d6c77}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Extemal\imgui\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
