@@ -7,6 +7,9 @@
 #pragma comment(lib,"dxgi.lib")
 
 using namespace Microsoft::WRL;
+
+const uint32_t DirectXCommon::kMaxSRVCount = 512;
+
 void DirectXCommon::Initialize(WinApp* winApp)
 {
     this->winApp = winApp;
@@ -19,7 +22,8 @@ void DirectXCommon::Initialize(WinApp* winApp)
     DepthBufferInitialize();
     FenceInitialize();
     rtvDescriptorHeap = CreateDescriptorHeap(D3D12_DESCRIPTOR_HEAP_TYPE_RTV, 2, false);
-    srvDescriptorHeap = CreateDescriptorHeap(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 128, true);
+    srvDescriptorHeap = CreateDescriptorHeap(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, kMaxSRVCount, true);
+
 }
 
 void DirectXCommon::PreDraw()

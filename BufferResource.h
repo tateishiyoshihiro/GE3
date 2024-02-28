@@ -2,7 +2,7 @@
 #include<d3d12.h>
 #include<cassert>
 
-ID3D12Resource* CreateBufferResouce(ID3D12Device* device, size_t sizeInByte) {
+inline ID3D12Resource* CreateBufferResouce(ID3D12Device* device, size_t sizeInByte) {
 	ID3D12Resource* resource = nullptr;
 	//VertexResousource
 	D3D12_HEAP_PROPERTIES uploadHeapPropertties{};
@@ -19,7 +19,7 @@ ID3D12Resource* CreateBufferResouce(ID3D12Device* device, size_t sizeInByte) {
 	assert(SUCCEEDED(result));
 	return resource;
 }
-ID3D12Resource* CreateTextureResource(ID3D12Device* device, const DirectX::TexMetadata& metaData) {
+inline ID3D12Resource* CreateTextureResource(ID3D12Device* device, const DirectX::TexMetadata& metaData) {
 	D3D12_RESOURCE_DESC resourceDesc{};
 	resourceDesc.Width = UINT(metaData.width);
 	resourceDesc.Height = UINT(metaData.height);

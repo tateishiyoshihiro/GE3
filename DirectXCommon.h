@@ -21,6 +21,7 @@ public://メンバー関数
 	DXGI_SWAP_CHAIN_DESC1 GetSwapChainDesc() { return swapChainDesc; }
 	D3D12_RENDER_TARGET_VIEW_DESC GetRtvDesc() { return rtvDesc; }
 	ID3D12DescriptorHeap* GetSrvDescriptorHeap() { return srvDescriptorHeap.Get(); }
+	static const uint32_t kMaxSRVCount;
 private:
 	//デバイス
 	void DeviceInitialize();
@@ -75,5 +76,7 @@ private:
 	ComPtr<ID3D12DescriptorHeap>rtvDescriptorHeap;
 	//SRV(画像の保存)
 	ComPtr<ID3D12DescriptorHeap>srvDescriptorHeap;
+
+
 };
 
