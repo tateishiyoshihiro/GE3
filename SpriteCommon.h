@@ -4,6 +4,8 @@
 #include<dxcapi.h>
 #include <d3d12.h>
 #include"DirectXCommon.h"
+#include <../DirectXTex.h>
+
 //‹¤’Ê
 class SpriteCommon
 {
@@ -15,6 +17,9 @@ public:
 	//Getter
 	ID3D12RootSignature* GetRootSignature() { return rootSignature.Get(); }
 	ID3D12PipelineState* GetPipelineState() { return pipelineState.Get(); }
+	//‰æ‘œ‚Ì“Ç‚İ‚İ
+	DirectX::ScratchImage LoadTexture(const std::wstring& filepath);
+	void UploadTextureData(ID3D12Resource* texture, const DirectX::ScratchImage& mipImages);
 private:
 	IDxcBlob* CompileShader(
 		const std::wstring& filePath,

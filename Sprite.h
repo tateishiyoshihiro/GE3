@@ -15,6 +15,11 @@ private:
 		DirectX::XMFLOAT3 rotate;
 		DirectX::XMFLOAT3 translate;
 	};
+
+	struct VertexData {
+		DirectX::XMFLOAT4 position;
+		DirectX::XMFLOAT2 texcoord;
+	};
 public:
 	//èâä˙âª
 	void Initialize(DirectXCommon* dxCommon, SpriteCommon* common);
