@@ -1,5 +1,4 @@
 #include "Sprite.hlsli"
-
 struct Material
 {
     float4 color;
@@ -16,6 +15,6 @@ PixelShaderOutput main(VertexShaderOutput input)
 {
     PixelShaderOutput output;
     float4 textureColor = gTexture.Sample(gSampler, input.texcoord);
-    output.color = gMaterial.color*textureColor;
+    output.color = gMaterial.color * textureColor;
     return output;
 }
