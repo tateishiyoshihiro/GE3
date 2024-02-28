@@ -18,7 +18,7 @@ void Sprite::Initialize(DirectXCommon* dxCommon, SpriteCommon* common)
 	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MipLevels = UINT(metaData.mipLevels);
 	D3D12_CPU_DESCRIPTOR_HANDLE textureSrvhandleCPU = dxCommon_->GetSrvDescriptorHeap()->GetCPUDescriptorHandleForHeapStart();
-	D3D12_GPU_DESCRIPTOR_HANDLE textureSrvhandleGPU = dxCommon_->GetSrvDescriptorHeap()->GetGPUDescriptorHandleForHeapStart();
+	textureSrvhandleGPU = dxCommon_->GetSrvDescriptorHeap()->GetGPUDescriptorHandleForHeapStart();
 	textureSrvhandleCPU.ptr += dxCommon_->GetDevice()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 	textureSrvhandleGPU.ptr += dxCommon_->GetDevice()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 	dxCommon_->GetDevice()->CreateShaderResourceView(textureResource, &srvDesc, textureSrvhandleCPU);
@@ -52,6 +52,7 @@ void Sprite::Draw()
 	dxCommon_->GetCommandList()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	dxCommon_->GetCommandList()->SetGraphicsRootConstantBufferView(0,materialResource->GetGPUVirtualAddress());
 	dxCommon_->GetCommandList()->SetGraphicsRootConstantBufferView(1, wvpResource->GetGPUVirtualAddress());
+	dxCommon_->GetCommandList()->SetComputeRootDescriptorTable(2, textureSrvhandleGPU);
 	dxCommon_->GetCommandList()->DrawInstanced(3, 1, 0, 0);
 }
 

@@ -32,5 +32,12 @@ private:
 	DirectXCommon* dxCommon_ = nullptr;
 	ComPtr<ID3D12RootSignature>rootSignature;
 	ComPtr<ID3D12PipelineState>pipelineState;
+
+	ComPtr<IDxcUtils> dxcUtils;
+	ComPtr<IDxcCompiler3> dxcCompiler;
+	ComPtr<IDxcIncludeHandler> includeHandler;
+
+	ComPtr<ID3D10Blob>signatureBlob;
+	ComPtr<ID3D10Blob>errorBlob;
 };
 
